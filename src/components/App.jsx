@@ -69,10 +69,11 @@ const App = () => {
             largeImageURL={largeImageUrl}
           />
         )}
-
-        {loader && <Loader />}
       </section>
       {totalImage > imgInfo.length && <Button onClick={loadMore} />}
       {loader && <Loader />}
     </>
-}
+  );
+};
+
+export default App;
