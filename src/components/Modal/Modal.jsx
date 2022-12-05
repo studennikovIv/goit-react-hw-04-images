@@ -1,6 +1,6 @@
+import React from 'react';
 import css from './Modal.module.css';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
 
 const Modal = ({ closeModal, largeImageURL }) => {
   const handleKeyDown = event => {
