@@ -1,9 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import css from './Modal.module.css';
 import PropTypes from 'prop-types';
 
 const Modal = ({ closeModal, largeImageURL }) => {
-  const imgRef = useRef();
   let handleKeyDown;
   useEffect(() => {
     const handleKeyDown = event => {
@@ -25,7 +24,7 @@ const Modal = ({ closeModal, largeImageURL }) => {
         }
       }}
     >
-      <div ref={imgRef} className={css.Modal}>
+      <div className={css.Modal}>
         <img src={largeImageURL} alt="" />
       </div>
     </div>
