@@ -17,27 +17,12 @@ const App = () => {
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
-    setImgInfo([]);
-    setTotalImage(0);
     if (imgName !== '') {
-      const page = 1;
-      setLoader(true);
-      API(imgName, page)
-        .then(imgArr => {
-          setTotalImage(imgArr.data.total);
-          setImgInfo(imgArr.data.hits);
-        })
-        .catch(error => console.log(error.massage))
-        .finally(() => setLoader(false));
-    }
-  }, [imgName]);
-
-  useEffect(() => {
-    if (page > 1) {
       setLoader(true);
       API(imgName, page)
         .then(imgArr => {
           setImgInfo(curr => [...curr, ...imgArr.data.hits]);
+          setTotalImage(imgArr.data.total);
         })
         .catch(error => console.log(error.massage))
         .finally(() => setLoader(false));
@@ -47,6 +32,7 @@ const App = () => {
   const searchImages = imgName => {
     setPage(1);
     setImgName(imgName);
+    setImgInfo([]);
   };
   const closeModal = e => {
     setModalShow(false);

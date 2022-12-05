@@ -3,7 +3,6 @@ import css from './Modal.module.css';
 import PropTypes from 'prop-types';
 
 const Modal = ({ closeModal, largeImageURL }) => {
-  let handleKeyDown;
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
@@ -20,7 +19,6 @@ const Modal = ({ closeModal, largeImageURL }) => {
       onClick={e => {
         if (e.target.localName !== 'img') {
           closeModal();
-          window.removeEventListener('keydown', handleKeyDown);
         }
       }}
     >
