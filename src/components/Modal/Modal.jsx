@@ -42,9 +42,9 @@
 
 import css from './Modal.module.css';
 import PropTypes from 'prop-types';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
-const Modal = ({ modalShow, closeModal, largeImageURL }) => {
+const Modal = ({ closeModal, largeImageURL }) => {
   const handleKeyDown = event => {
     if (event.code === 'Escape') {
       closeModal();
@@ -72,4 +72,8 @@ const Modal = ({ modalShow, closeModal, largeImageURL }) => {
   );
 };
 
+Modal.propTypes = {
+  largeImageURL: PropTypes.string.isRequired,
+  closeModal: PropTypes.func.isRequired,
+};
 export default Modal;
