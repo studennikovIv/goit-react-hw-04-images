@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import css from './Modal.module.css';
 import PropTypes from 'prop-types';
 
 const Modal = ({ closeModal, largeImageURL }) => {
-  const handleKeyDown = event => {
-    if (event.code === 'Escape') {
-      closeModal();
-    }
-  };
-
+  const imgRef = useRef();
+  let handleKeyDown;
   useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.code === 'Escape') {
+        closeModal();
+        window.removeEventListener('keydown', handleKeyDown);
+      }
+    };
     window.addEventListener('keydown', handleKeyDown);
   }, []);
 
@@ -23,7 +25,7 @@ const Modal = ({ closeModal, largeImageURL }) => {
         }
       }}
     >
-      <div className={css.Modal}>
+      <div ref={imgRef} className={css.Modal}>
         <img src={largeImageURL} alt="" />
       </div>
     </div>
